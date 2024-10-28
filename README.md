@@ -33,7 +33,7 @@ Deploy **Annie Music Bot** on Heroku easily:
 
 4. **Run the Bot**
    ```bash
-   python3 -m YukkiMusic
+   bash start
    ```
 
 5.  **Detach from tmux session**
