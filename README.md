@@ -78,4 +78,4 @@ Together, we can make **YukkiMusic** and **YukkiMusicBot** even better!
 
 ### Special Thanks
 
-A huge shout-out to [Team Yukki](https://github.com/grandxmasti) for their inspiring work on [YukkiMusicBot](https://github.com/moonshining1/Annie-Music). Your contributions have been invaluable!
+A huge shout-out to [Team Annie](https://github.com/grandxmasti) for their inspiring work on [AnnieMusic](https://github.com/moonshining1/Annie-Music). Your contributions have been invaluable!
