@@ -50,6 +50,7 @@ pyshorteners
 pyttsx3
 pytz
 pytube
+pytgcalls==0.8.7
 py-tgcalls==0.9.7
 pyyaml
 qrcode
