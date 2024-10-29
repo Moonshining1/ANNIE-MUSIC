@@ -27,7 +27,7 @@ from ANNIEMUSIC.utils.inline import help_pannel, private_panel, start_panel
 from config import BANNED_USERS, AYUV
 from strings import get_string
 
-ANNIE_PHOTO = [
+ANNIE_VID = [
     "https://envs.sh/A-y.png",
     "https://envs.sh/A-y.png"
 ]
@@ -110,8 +110,8 @@ async def start_pm(client, message: Message, _):
         served_chats = len(await get_served_chats())
         served_users = len(await get_served_users())
         UP, CPU, RAM, DISK = await bot_sys_stats()
-        await message.reply_photo(
-            random.choice(ANNIE_PHOTO),
+        await message.reply_video(
+            random.choice(ANNIE_VID),
             caption=random.choice(AYUV).format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM, served_users, served_chats),
             reply_markup=InlineKeyboardMarkup(out),
         )
@@ -126,8 +126,8 @@ async def start_pm(client, message: Message, _):
 async def start_gp(client, message: Message, _):
     out = start_panel(_)
     uptime = int(time.time() - _boot_)
-    await message.reply_photo(
-        random.choice(ANNIE_PHOTO),
+    await message.reply_video(
+        random.choice(ANNIE_VID),
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
     )
@@ -160,8 +160,8 @@ async def welcome(client, message: Message):
                     return await app.leave_chat(message.chat.id)
 
                 out = start_panel(_)
-                await message.reply_photo(
-                    random.choice(ANNIE_PHOTO),
+                await message.reply_video(
+                    random.choice(ANNIE_VID),
                     caption=_["start_3"].format(
                         message.from_user.mention,
                         app.mention,
