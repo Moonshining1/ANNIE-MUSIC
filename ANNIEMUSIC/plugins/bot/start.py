@@ -27,17 +27,9 @@ from ANNIEMUSIC.utils.inline import help_pannel, private_panel, start_panel
 from config import BANNED_USERS, AYUV
 from strings import get_string
 
-ANNIE_VID = [
-    "https://telegra.ph/file/9b7e1b820c72a14d90be7.mp4",
-    "https://telegra.ph/file/a4d90b0cb759b67d68644.mp4",
-    "https://telegra.ph/file/72f349b1386d6d9374a38.mp4",
-    "https://telegra.ph/file/2b75449612172a96d4599.mp4",
-    "https://telegra.ph/file/b3ac2d77205d5ded860de.mp4",
-    "https://telegra.ph/file/58ae4ac86ef70dc8c8f6a.mp4",
-    "https://telegra.ph/file/c6c1ac9aee4192a8a3747.mp4",
-    "https://telegra.ph/file/55c840c8eba0555318f0d.mp4",
-    "https://telegra.ph/file/e97715885d0a0cfbddaaa.mp4",
-    "https://telegra.ph/file/943bb99829ec526c3f99a.mp4"
+ANNIE_PHOTO = [
+    "https://envs.sh/A-y.png",
+    "https://envs.sh/A-y.png"
 ]
 
 STICKERS = [
@@ -118,8 +110,8 @@ async def start_pm(client, message: Message, _):
         served_chats = len(await get_served_chats())
         served_users = len(await get_served_users())
         UP, CPU, RAM, DISK = await bot_sys_stats()
-        await message.reply_video(
-            random.choice(ANNIE_VID),
+        await message.reply_photo(
+            random.choice(ANNIE_PHOTO),
             caption=random.choice(AYUV).format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM, served_users, served_chats),
             reply_markup=InlineKeyboardMarkup(out),
         )
@@ -134,8 +126,8 @@ async def start_pm(client, message: Message, _):
 async def start_gp(client, message: Message, _):
     out = start_panel(_)
     uptime = int(time.time() - _boot_)
-    await message.reply_video(
-        random.choice(ANNIE_VID),
+    await message.reply_photo(
+        random.choice(ANNIE_PHOTO),
         caption=_["start_1"].format(app.mention, get_readable_time(uptime)),
         reply_markup=InlineKeyboardMarkup(out),
     )
@@ -168,8 +160,8 @@ async def welcome(client, message: Message):
                     return await app.leave_chat(message.chat.id)
 
                 out = start_panel(_)
-                await message.reply_video(
-                    random.choice(ANNIE_VID),
+                await message.reply_photo(
+                    random.choice(ANNIE_PHOTO),
                     caption=_["start_3"].format(
                         message.from_user.mention,
                         app.mention,
