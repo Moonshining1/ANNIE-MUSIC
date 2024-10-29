@@ -21,6 +21,9 @@ MONGO_DB_URI = getenv("MONGO_DB_URI", None)
 LOGGER_ID = int(getenv("LOGGER_ID", -1002024032988))
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 17000))
 # External APIs - Get these from their respective providers
+CLEANMODE_DELETE_MINS = int(
+    getenv("CLEANMODE_MINS", "5")
+)  # Remember to give value in Seconds
 GPT_API = getenv("GPT_API")
 DEEP_API = getenv("DEEP_API")
 OWNER_ID = int(getenv("OWNER_ID", 7297381612))
