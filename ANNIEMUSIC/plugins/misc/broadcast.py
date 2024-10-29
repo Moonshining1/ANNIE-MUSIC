@@ -7,7 +7,7 @@ from pyrogram.errors import FloodWait
 from pyrogram.raw import types
 
 import config
-from config import OWNER_ID, clean
+from config import OWNER_ID
 from strings import get_command
 from ANNIEMUSIC import app
 from ANNIEMUSIC.utils.cleanmode import protected_messages
