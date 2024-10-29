@@ -11,7 +11,7 @@ from ANNIEMUSIC.utils.database import get_assistant
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from ANNIEMUSIC import YouTube, app
-from ANNIEMUSIC.core.call import JARVIS
+from ANNIEMUSIC.core.call import MOON
 from ANNIEMUSIC.misc import SUDOERS, db
 from ANNIEMUSIC.utils.database import (
     get_active_chats,
@@ -217,7 +217,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             return await CallbackQuery.answer(_["admin_1"], show_alert=True)
         await CallbackQuery.answer()
         await music_off(chat_id)
-        await JARVIS.pause_stream(chat_id)
+        await MOON.pause_stream(chat_id)
         buttons = [
         [
             InlineKeyboardButton(text="ʀᴇsᴜᴍᴇ", callback_data=f"ADMIN Resume|{chat_id}"),
@@ -232,7 +232,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             return await CallbackQuery.answer(_["admin_3"], show_alert=True)
         await CallbackQuery.answer()
         await music_on(chat_id)
-        await JARVIS.resume_stream(chat_id)
+        await MOON.resume_stream(chat_id)
         buttons_resume = [
         [
             
@@ -256,7 +256,7 @@ async def del_back_playlist(client, CallbackQuery, _):
         )
     elif command == "Stop" or command == "End":
         await CallbackQuery.answer()
-        await JARVIS.stop_stream(chat_id)
+        await MOON.stop_stream(chat_id)
         await set_loop(chat_id, 0)
         await CallbackQuery.message.reply_text(
             _["admin_5"].format(mention), reply_markup=close_markup(_)
@@ -269,7 +269,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             )
         await CallbackQuery.answer()
         await mute_on(chat_id)
-        await JARVIS.mute_stream(chat_id)
+        await MOON.mute_stream(chat_id)
         await CallbackQuery.message.reply_text(
             _["admin_46"].format(mention)
         )
@@ -280,7 +280,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             )
         await CallbackQuery.answer()
         await mute_off(chat_id)
-        await JARVIS.unmute_stream(chat_id)
+        await MOON.unmute_stream(chat_id)
         await CallbackQuery.message.reply_text(
             _["admin_48"].format(mention)
         )
@@ -334,7 +334,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                         reply_markup=close_markup(_),
                     )
                     try:
-                        return await JARVIS.stop_stream(chat_id)
+                        return await MOON.stop_stream(chat_id)
                     except:
                         return
             except:
@@ -348,7 +348,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                         ),
                         reply_markup=close_markup(_),
                     )
-                    return await JARVIS.stop_stream(chat_id)
+                    return await MOON.stop_stream(chat_id)
                 except:
                     return
         else:
@@ -380,7 +380,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             except:
                 image = None
             try:
-                await JARVIS.skip_stream(chat_id, link, video=status, image=image)
+                await MOON.skip_stream(chat_id, link, video=status, image=image)
             except:
                 return await CallbackQuery.message.reply_text(_["call_6"])
             button = stream_markup(_, chat_id)
@@ -416,7 +416,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             except:
                 image = None
             try:
-                await JARVIS.skip_stream(chat_id, file_path, video=status, image=image)
+                await MOON.skip_stream(chat_id, file_path, video=status, image=image)
             except:
                 return await mystic.edit_text(_["call_6"])
             button = stream_markup(_, chat_id)
@@ -437,7 +437,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             await mystic.delete()
         elif "index_" in queued:
             try:
-                await JARVIS.skip_stream(chat_id, videoid, video=status)
+                await MOON.skip_stream(chat_id, videoid, video=status)
             except:
                 return await CallbackQuery.message.reply_text(_["call_6"])
             button = stream_markup(_, chat_id)
@@ -460,7 +460,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                 except:
                     image = None
             try:
-                await JARVIS.skip_stream(chat_id, queued, video=status, image=image)
+                await MOON.skip_stream(chat_id, queued, video=status, image=image)
             except:
                 return await CallbackQuery.message.reply_text(_["call_6"])
             if videoid == "telegram":
@@ -556,7 +556,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             if n == 0:
                 return await mystic.edit_text(_["admin_22"])
         try:
-            await JARVIS.seek_stream(
+            await MOON.seek_stream(
                 chat_id,
                 file_path,
                 seconds_to_min(to_seek),
