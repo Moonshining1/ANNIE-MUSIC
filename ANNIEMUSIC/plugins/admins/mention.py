@@ -5,7 +5,7 @@ from pyrogram.enums import ChatType, ChatMemberStatus
 from pyrogram.errors import UserNotParticipant
 from pyrogram.types import ChatPermissions
 from ANNIEMUSIC import app
-from ANNIEMUSIC.utils.jarvis_ban import admin_filter
+from ANNIEMUSIC.utils.moon_ban import admin_filter
 
 
 
