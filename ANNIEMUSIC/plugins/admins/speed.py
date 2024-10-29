@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from ANNIEMUSIC import app
-from ANNIEMUSIC.core.call import JARVIS
+from ANNIEMUSIC.core.call import MOON
 from ANNIEMUSIC.misc import SUDOERS, db
 from ANNIEMUSIC.utils import AdminRightsCheck
 from ANNIEMUSIC.utils.database import is_active_chat, is_nonadmin_chat
