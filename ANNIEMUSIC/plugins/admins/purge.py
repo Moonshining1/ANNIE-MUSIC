@@ -3,7 +3,7 @@ from pyrogram import filters
 from pyrogram.enums import ChatType
 from pyrogram.errors import MessageDeleteForbidden, RPCError
 from pyrogram.types import Message
-from ANNIEMUSIC.utils.jarvis_ban import admin_filter
+from ANNIEMUSIC.utils.moon_ban import admin_filter
 from ANNIEMUSIC import app
 
 
