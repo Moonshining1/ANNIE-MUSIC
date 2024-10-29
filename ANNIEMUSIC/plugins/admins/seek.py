@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from ANNIEMUSIC import YouTube, app
-from ANNIEMUSIC.core.call import JARVIS
+from ANNIEMUSIC.core.call import MOON
 from ANNIEMUSIC.misc import db
 from ANNIEMUSIC.utils import AdminRightsCheck, seconds_to_min
 from ANNIEMUSIC.utils.inline import close_markup
