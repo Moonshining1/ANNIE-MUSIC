@@ -26,6 +26,7 @@ from ANNIEMUSIC.utils.databaset import (
 from ANNIEMUSIC.utils.decorators.language import language
 from ANNIEMUSIC.utils.formatters import alpha_to_int
 
+broadcast = ["broadcast"]  # Add any other aliases if needed, e.g., ["broadcast", "announce"]
 AUTO_DELETE = config.CLEANMODE_DELETE_MINS
 AUTO_SLEEP = 5
 IS_BROADCASTING = False
