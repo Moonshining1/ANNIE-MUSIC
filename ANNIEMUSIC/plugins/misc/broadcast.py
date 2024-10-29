@@ -8,7 +8,6 @@ from pyrogram.raw import types
 
 import config
 from config import OWNER_ID
-from strings import get_command
 from ANNIEMUSIC import app
 from ANNIEMUSIC.utils.cleanmode import protected_messages
 from ANNIEMUSIC.utils.database import (
@@ -27,7 +26,8 @@ from ANNIEMUSIC.utils.database import (
 from ANNIEMUSIC.utils.decorators.language import language
 from ANNIEMUSIC.utils.formatters import alpha_to_int
 
-BROADCAST_COMMAND = get_command("BROADCAST_COMMAND")
+@app.on_message(filters.command("broadcast") & SUDOERS)
+@language
 AUTO_DELETE = config.CLEANMODE_DELETE_MINS
 AUTO_SLEEP = 5
 IS_BROADCASTING = False
