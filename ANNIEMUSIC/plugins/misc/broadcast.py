@@ -26,8 +26,6 @@ from ANNIEMUSIC.utils.databaset import (
 from ANNIEMUSIC.utils.decorators.language import language
 from ANNIEMUSIC.utils.formatters import alpha_to_int
 
-@app.on_message(filters.command("broadcast") & SUDOERS)
-@language
 AUTO_DELETE = config.CLEANMODE_DELETE_MINS
 AUTO_SLEEP = 5
 IS_BROADCASTING = False
@@ -62,8 +60,7 @@ async def clean_mode(client, update, users, chats):
     clean[chat_id].append(put)
     await set_queries(1)
 
-
-@app.on_message(filters.command(BROADCAST_COMMAND) & filters.user(OWNER_ID))
+@app.on_message(filters.command(broadcast) & filters.user(OWNER_ID))
 @language
 async def braodcast_message(client, message, _):
     global IS_BROADCASTING
@@ -273,4 +270,3 @@ async def auto_clean():
 
 
 asyncio.create_task(auto_clean())
-
