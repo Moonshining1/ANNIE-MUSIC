@@ -6,7 +6,7 @@ import config
 from ..logging import LOGGER
 
 
-class JARVIS(Client):
+class MOON(Client):
     def __init__(self):
         LOGGER(__name__).info(f"Annie is on the way...")
         super().__init__(
