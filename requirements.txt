@@ -51,6 +51,7 @@ pyttsx3
 pytz
 pytube
 py-tgcalls==1.2.9
+py-tgcalls==0.9.7
 pyyaml
 qrcode
 requests
