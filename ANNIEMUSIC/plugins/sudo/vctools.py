@@ -3,7 +3,7 @@ from pyrogram import filters
 from pyrogram.enums import ChatType
 from strings import get_string
 from ANNIEMUSIC import app
-from ANNIEMUSIC.utils import VIPbin
+from ANNIEMUSIC.utils import MOONbin
 MU = "MOON_SHINING_ROBOT" #Dont change it seever connecter
 from ANNIEMUSIC.utils.databaset import get_assistant, get_lang
 import asyncio
