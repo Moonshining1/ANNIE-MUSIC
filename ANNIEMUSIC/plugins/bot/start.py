@@ -28,8 +28,10 @@ from config import BANNED_USERS, AYUV
 from strings import get_string
 
 ANNIE_VID = [
-    "https://envs.sh/A-y.png",
-    "https://envs.sh/A-y.png"
+    "https://files.catbox.moe/dcf4my.mp4",
+    "https://files.catbox.moe/wvpwcp.mp4",
+    "https://files.catbox.moe/wwr0mq.mp4",
+    "https://files.catbox.moe/d04cvc.mp4"
 ]
 
 STICKERS = [
