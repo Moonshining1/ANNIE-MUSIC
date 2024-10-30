@@ -1,56 +1,60 @@
-from ANNIEMUSIC.misc import SUDOERS
+from ANNIEMUSIC.misc import SUDOERS, SUPPORT_CHAT
 from ANNIEMUSIC.utils.database import get_lang, is_maintenance
 from strings import get_string
+from pyrogram.types import Message, CallbackQuery
 
 
 def language(mystic):
-    async def wrapper(_, message, **kwargs):
-        if await is_maintenance() is False:
+    async def wrapper(_, message: Message, **kwargs):
+        if not await is_maintenance():
             if message.from_user.id not in SUDOERS:
-                return await message.reply_text(
-                    text=f"{app.mention} ɪs ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ, ᴠɪsɪᴛ <a href={SUPPORT_CHAT}>sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ</a> ғᴏʀ ᴋɴᴏᴡɪɴɢ ᴛʜᴇ ʀᴇᴀsᴏɴ.",
+                await message.reply_text(
+                    text=f"{get_string('app_name')} is under maintenance. Please visit <a href='{SUPPORT_CHAT}'>support chat</a> for updates.",
                     disable_web_page_preview=True,
                 )
-        try:
-            await message.delete()
-        except:
-            pass
-
-        try:
-            language = await get_lang(message.chat.id)
-            language = get_string(language)
-        except:
-            language = get_string("en")
-        return await mystic(_, message, language)
+                return
+        await _delete_message(message)
+        lang_code = await _get_language_code(message.chat.id)
+        return await mystic(_, message, lang_code)
 
     return wrapper
 
 
 def languageCB(mystic):
-    async def wrapper(_, CallbackQuery, **kwargs):
-        if await is_maintenance() is False:
-            if CallbackQuery.from_user.id not in SUDOERS:
-                return await CallbackQuery.answer(
-                    f"{app.mention} ɪs ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ, ᴠɪsɪᴛ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ ғᴏʀ ᴋɴᴏᴡɪɴɢ ᴛʜᴇ ʀᴇᴀsᴏɴ.",
+    async def wrapper(_, callback_query: CallbackQuery, **kwargs):
+        if not await is_maintenance():
+            if callback_query.from_user.id not in SUDOERS:
+                await callback_query.answer(
+                    f"{get_string('app_name')} is under maintenance. Visit support chat for more info.",
                     show_alert=True,
                 )
-        try:
-            language = await get_lang(CallbackQuery.message.chat.id)
-            language = get_string(language)
-        except:
-            language = get_string("en")
-        return await mystic(_, CallbackQuery, language)
+                return
+        lang_code = await _get_language_code(callback_query.message.chat.id)
+        return await mystic(_, callback_query, lang_code)
 
     return wrapper
 
 
 def LanguageStart(mystic):
-    async def wrapper(_, message, **kwargs):
-        try:
-            language = await get_lang(message.chat.id)
-            language = get_string(language)
-        except:
-            language = get_string("en")
-        return await mystic(_, message, language)
+    async def wrapper(_, message: Message, **kwargs):
+        lang_code = await _get_language_code(message.chat.id)
+        return await mystic(_, message, lang_code)
 
     return wrapper
+
+
+async def _delete_message(message: Message):
+    """Attempts to delete the message if possible."""
+    try:
+        await message.delete()
+    except Exception:
+        pass
+
+
+async def _get_language_code(chat_id: int):
+    """Fetches the language code for a specific chat. Defaults to 'en'."""
+    try:
+        lang_code = await get_lang(chat_id)
+        return get_string(lang_code)
+    except Exception:
+        return get_string("en")
