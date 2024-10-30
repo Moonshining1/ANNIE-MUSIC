@@ -1,6 +1,7 @@
-from pyrogram.types import InlineKeyboardButton
-
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardButton, Message
 import config
+import asyncio
 from ANNIEMUSIC import app
 
 
@@ -25,7 +26,9 @@ def private_panel(_):
             )
         ],
         [
-            InlineKeyboardButton(text=_["S_B_10"], user_id=config.OWNER_ID),
+            InlineKeyboardButton(
+                text=_["S_B_10"], url=f"https://t.me/{config.OWNER_ID}"
+            ),  # Link to the owner's profile
             InlineKeyboardButton(text=_["S_B_6"], url=config.SUPPORT_CHAT),
         ],
         [
