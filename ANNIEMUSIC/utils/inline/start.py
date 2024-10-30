@@ -21,7 +21,7 @@ def private_panel(_):
     buttons = [
         [
             InlineKeyboardButton(
-                text="🔎 How to use? Command Menu", callback_data="settings_back_helper")
+                text="🔎 How to use? Command Menu", callback_data="settings_back_helper"
             )
         ],
         [
