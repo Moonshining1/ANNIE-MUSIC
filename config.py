@@ -81,7 +81,7 @@ autoclean = []
 confirmer = {}
 
 START_IMG_URL = getenv(
-    "START_IMG_URL", "https://envs.sh/A-y.png"
+    "START_IMG_URL", "https://files.catbox.moe/dcf4my.mp4"
 )
 PING_VID_URL = getenv(
     "PING_VID_URL", "https://te.legra.ph/file/b8a0c1a00db3e57522b53.jpg"
