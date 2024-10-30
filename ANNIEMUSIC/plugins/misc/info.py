@@ -1,6 +1,4 @@
-import asyncio
-import os
-import time
+import asyncio, os, time, aiohttp
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 from asyncio import sleep
@@ -11,23 +9,26 @@ from pyrogram.types import *
 from typing import Union, Optional
 import random
 
-# List of Annie's photos
-anniephoto = [
-    "https://telegra.ph/file/07fd9e0e34bc84356f30d.jpg",
-    "https://telegra.ph/file/3c4de59511e179018f902.jpg",
-    "https://telegra.ph/file/07fd9e0e34bc84356f30d.jpg",
-    "https://telegra.ph/file/3c4de59511e179018f902.jpg"
+random_photo = [
+    "https://telegra.ph/file/1949480f01355b4e87d26.jpg",
+    "https://telegra.ph/file/3ef2cc0ad2bc548bafb30.jpg",
+    "https://telegra.ph/file/a7d663cd2de689b811729.jpg",
+    "https://telegra.ph/file/6f19dc23847f5b005e922.jpg",
+    "https://telegra.ph/file/2973150dd62fd27a3a6ba.jpg",
 ]
 
-# Function to get font
-get_font = lambda font_size, font_path: ImageFont.truetype(font_path, font_size)
+# --------------------------------------------------------------------------------- #
 
-# Function to resize text if too long
+
+get_font = lambda font_size, font_path: ImageFont.truetype(font_path, font_size)
 resize_text = (
     lambda text_size, text: (text[:text_size] + "...").upper()
     if len(text) > text_size
     else text.upper()
 )
+
+# --------------------------------------------------------------------------------- #
+
 
 async def get_userinfo_img(
     bg_path: str,
@@ -45,28 +46,32 @@ async def get_userinfo_img(
 
         circular_img = Image.new("RGBA", img.size, (0, 0, 0, 0))
         circular_img.paste(img, (0, 0), mask)
-        resized = circular_img.resize((977, 979))
-        bg.paste(resized, (1673, 293), resized)
+        resized = circular_img.resize((400, 400))
+        bg.paste(resized, (440, 160), resized)
 
     img_draw = ImageDraw.Draw(bg)
 
     img_draw.text(
-        (460, 1055),
+        (529, 627),
         text=str(user_id).upper(),
-        font=get_font(95, font_path),
-        fill=(125, 227, 230),
+        font=get_font(46, font_path),
+        fill=(255, 255, 255),
     )
 
 
     path = f"./userinfo_img_{user_id}.png"
     bg.save(path)
     return path
+   
 
-# Path to background image and font
-bg_path = "ANNIEMUSIC/assets/annie/AnnieNinfo.png"
-font_path = "ANNIEMUSIC/assets/annie/jarvisinf.ttf"
+# --------------------------------------------------------------------------------- #
 
-# Text template for user info
+bg_path = "ANNIEMUSIC/assets/userinfo.png"
+font_path = "ANNIEMUSIC/assets/hiroko.ttf"
+
+# --------------------------------------------------------------------------------- #
+
+
 INFO_TEXT = """**
 ❅─────✧❅✦❅✧─────❅
             ✦ ᴜsᴇʀ ɪɴғᴏ ✦
@@ -74,7 +79,7 @@ INFO_TEXT = """**
 ➻ ᴜsᴇʀ ɪᴅ ‣ **`{}`
 **➻ ғɪʀsᴛ ɴᴀᴍᴇ ‣ **{}
 **➻ ʟᴀsᴛ ɴᴀᴍᴇ ‣ **{}
-**➻ ᴜsᴇʀɴᴀᴍᴇ ‣ **{}
+**➻ ᴜsᴇʀɴᴀᴍᴇ ‣ **`{}`
 **➻ ᴍᴇɴᴛɪᴏɴ ‣ **{}
 **➻ ʟᴀsᴛ sᴇᴇɴ ‣ **{}
 **➻ ᴅᴄ ɪᴅ ‣ **{}
@@ -83,29 +88,31 @@ INFO_TEXT = """**
 **❅─────✧❅✦❅✧─────❅**
 """
 
-# Function to get user's status
+# --------------------------------------------------------------------------------- #
+
 async def userstatus(user_id):
-    try:
-        user = await app.get_users(user_id)
-        x = user.status
-        if x == enums.UserStatus.RECENTLY:
-            return "Recently."
-        elif x == enums.UserStatus.LAST_WEEK:
-            return "Last week."
-        elif x == enums.UserStatus.LONG_AGO:
-            return "Long time ago."
-        elif x == enums.UserStatus.OFFLINE:
-            return "Offline."
-        elif x == enums.UserStatus.ONLINE:
-            return "Online."
-    except:
+   try:
+      user = await app.get_users(user_id)
+      x = user.status
+      if x == enums.UserStatus.RECENTLY:
+         return "Recently."
+      elif x == enums.UserStatus.LAST_WEEK:
+          return "Last week."
+      elif x == enums.UserStatus.LONG_AGO:
+          return "Long time ago."
+      elif x == enums.UserStatus.OFFLINE:
+          return "Offline."
+      elif x == enums.UserStatus.ONLINE:
+         return "Online."
+   except:
         return "**sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ʜᴀᴘᴘᴇɴᴇᴅ !**"
+    
 
 # --------------------------------------------------------------------------------- #
 
 
 
-@app.on_message(filters.command(["info", "userinfo"], prefixes=["/", "!","."]))
+@app.on_message(filters.command(["info", "userinfo"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
 async def userinfo(_, message):
     chat_id = message.chat.id
     user_id = message.from_user.id
@@ -134,8 +141,8 @@ async def userinfo(_, message):
                     profile_path=photo,
                 )
             else:
-                # User doesn't have a profile photo, use anniephoto directly
-                welcome_photo = random.choice(anniephoto)
+                # User doesn't have a profile photo, use random_photo directly
+                welcome_photo = random.choice(random_photo)
                 
             await app.send_photo(chat_id, photo=welcome_photo, caption=INFO_TEXT.format(
                 id, first_name, last_name, username, mention, status, dc_id, bio), reply_to_message_id=message.id)
@@ -165,8 +172,8 @@ async def userinfo(_, message):
                     profile_path=photo,
                 )
             else:
-                # User doesn't have a profile photo, use anniephoto directly
-                welcome_photo = random.choice(anniephoto)
+                # User doesn't have a profile photo, use random_photo directly
+                welcome_photo = random.choice(random_photo)
                 
             await app.send_photo(chat_id, photo=welcome_photo, caption=INFO_TEXT.format(
                 id, first_name, last_name, username, mention, status, dc_id, bio), reply_to_message_id=message.id)
@@ -197,11 +204,10 @@ async def userinfo(_, message):
                     profile_path=photo,
                 )
             else:
-                # User doesn't have a profile photo, use anniephoto directly
-                welcome_photo = random.choice(anniephoto)
+                # User doesn't have a profile photo, use random_photo directly
+                welcome_photo = random.choice(random_photo)
                 
             await app.send_photo(chat_id, photo=welcome_photo, caption=INFO_TEXT.format(
                 id, first_name, last_name, username, mention, status, dc_id, bio), reply_to_message_id=message.id)
         except Exception as e:
             await message.reply_text(str(e))
-                
