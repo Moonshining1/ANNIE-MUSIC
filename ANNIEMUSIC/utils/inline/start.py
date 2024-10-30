@@ -27,7 +27,7 @@ def private_panel(_):
         ],
         [
             InlineKeyboardButton(
-                text=_["S_B_10"], url=f"https://t.me/{config.OWNER_ID}"
+                text=_["S_B_10"], url=f"https://t.me/about_ur_moonshining"
             ),  # Link to the owner's profile
             InlineKeyboardButton(text=_["S_B_6"], url=config.SUPPORT_CHAT),
         ],
