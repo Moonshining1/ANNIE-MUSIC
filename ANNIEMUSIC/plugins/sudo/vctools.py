@@ -77,7 +77,7 @@ from pyrogram import filters
 from pyrogram.types import *
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from VIPMUSIC import app
+from ANNIEMUSIC import app
 
 
 # vc on
@@ -164,34 +164,3 @@ async def search(event):
             await session.close()
 
 
-__MODULE__ = "Mᴀᴛʜ"
-__HELP__ = """
-
-## Mᴀᴛʜ Cᴏᴍᴍᴀɴᴅ Hᴇᴘ
-
-### 1. /ᴍᴀᴛʜ [ᴇxᴘʀᴇssɪᴏɴ]
-**Dᴇsᴄʀɪᴘᴛɪᴏɴ:**
-Cᴀᴄᴜᴀᴛᴇs ᴛʜᴇ ʀᴇsᴜᴛ ᴏғ ᴀ ᴍᴀᴛʜᴇᴍᴀᴛɪᴄᴀ ᴇxᴘʀᴇssɪᴏɴ.
-
-**Usᴀɢᴇ:**
-/ᴍᴀᴛʜ [ᴇxᴘʀᴇssɪᴏɴ]
-
-**Dᴇᴛᴀɪs:**
-- Sᴜᴘᴘᴏʀᴛs ʙᴀsɪᴄ ᴀʀɪᴛʜᴍᴇᴛɪᴄ ᴏᴘᴇʀᴀᴛɪᴏɴs: ᴀᴅᴅɪᴛɪᴏɴ (+), sᴜʙᴛʀᴀᴄᴛɪᴏɴ (-), ᴍᴜᴛɪᴘɪᴄᴀᴛɪᴏɴ (*), ᴀɴᴅ ᴅɪᴠɪsɪᴏɴ (/).
-- Rᴇᴛᴜʀɴs ᴛʜᴇ ʀᴇsᴜᴛ ᴏғ ᴛʜᴇ ᴇxᴘʀᴇssɪᴏɴ.
-- Dɪsᴘᴀʏs "Iɴᴠᴀɪᴅ ᴇxᴘʀᴇssɪᴏɴ" ɪғ ᴛʜᴇ ᴇxᴘʀᴇssɪᴏɴ ɪs ɴᴏᴛ ᴠᴀɪᴅ.
-
-## Gᴏᴏɢᴇ Sᴇᴀʀᴄʜ Cᴏᴍᴍᴀɴᴅ Hᴇᴘ
-
-### 1. /sᴘɢ [ǫᴜᴇʀʏ]
-**Dᴇsᴄʀɪᴘᴛɪᴏɴ:**
-Sᴇᴀʀᴄʜᴇs Gᴏᴏɢᴇ ᴀɴᴅ ᴅɪsᴘᴀʏs sᴇᴀʀᴄʜ ʀᴇsᴜᴛs.
-
-**Usᴀɢᴇ:**
-/sᴘɢ [ǫᴜᴇʀʏ]
-
-**Dᴇᴛᴀɪs:**
-- Sᴇᴀʀᴄʜᴇs Gᴏᴏɢᴇ ғᴏʀ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ ǫᴜᴇʀʏ.
-- Dɪsᴘᴀʏs sᴇᴀʀᴄʜ ʀᴇsᴜᴛs ᴡɪᴛʜ ᴛɪᴛᴇs ᴀɴᴅ ɪɴᴋs.
-- Sᴜᴘᴘᴏʀᴛs ᴘᴀɢɪɴᴀᴛɪᴏɴ ᴡɪᴛʜ ɴᴇxᴛ ʙᴜᴛᴛᴏɴ ᴛᴏ ᴠɪᴇᴡ ᴍᴏʀᴇ ʀᴇsᴜᴛs.
-"""
