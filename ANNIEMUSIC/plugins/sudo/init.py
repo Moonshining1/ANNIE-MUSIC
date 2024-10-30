@@ -1,7 +1,7 @@
 import asyncio
 import config
 from ANNIEMUSIC import app
-from ANNIEMUSIC.utils.database import get_assistant
+from ANNIEMUSIC.utils.databaset import get_assistant
 
 AUTO = True
 ADD_INTERVAL = 60  # Set interval to a reasonable delay to avoid rate limits
