@@ -65,4 +65,4 @@ youtube-search
 youtube-search-python
 yt-dlp
 git+https://github.com/KurimuzonAkuma/pyrogram@dev
-git+https://github.com/Vivekkumar-IN/TheApi@main
+
