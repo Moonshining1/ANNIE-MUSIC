@@ -21,18 +21,22 @@ def private_panel(_):
     buttons = [
         [
             InlineKeyboardButton(
-                text=_["S_B_3"],
+                text="🔎 How to use? Command Menu", callback_data="settings_back_helper")
+            )
+        ],
+        [
+            InlineKeyboardButton(text="🎄 Update 🎄", url="https://t.me/kittyxupdates"),
+            InlineKeyboardButton(text="📨 Support", url="https://t.me/grandxmasti"),
+        ],
+        [
+            InlineKeyboardButton(
+                text="+ Add me to your clan darlo +",
                 url=f"https://t.me/{app.username}?startgroup=true",
             )
         ],
         [
-            InlineKeyboardButton(
-                text=_["S_B_10"], url=f"https://t.me/about_ur_moonshining/5"
-            ),  # Link to the owner's profile
-            InlineKeyboardButton(text=_["S_B_6"], url=config.SUPPORT_CHAT),
-        ],
-        [
-            InlineKeyboardButton(text=_["S_B_4"], callback_data="settings_back_helper"),
+            InlineKeyboardButton(text="❄ Owner ❄", url=f"https://t.me/about_ur_moonshining/5"),
+            InlineKeyboardButton(text="💡 Git Repo", url="https://github.com/moonshining1/anniemusic"),
         ],
     ]
     return buttons
