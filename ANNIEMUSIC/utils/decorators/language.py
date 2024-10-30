@@ -1,4 +1,4 @@
-from ANNIEMUSIC.misc import SUDOERS, SUPPORT_CHAT
+from ANNIEMUSIC.misc import SUDOERS
 from ANNIEMUSIC.utils.database import get_lang, is_maintenance
 from strings import get_string
 from pyrogram.types import Message, CallbackQuery
@@ -9,7 +9,7 @@ def language(mystic):
         if not await is_maintenance():
             if message.from_user.id not in SUDOERS:
                 await message.reply_text(
-                    text=f"{get_string('app_name')} is under maintenance. Please visit <a href='{SUPPORT_CHAT}'>support chat</a> for updates.",
+                    text=f"{get_string('app_name')} is under maintenance. Please visit @grandxmasti for updates.",
                     disable_web_page_preview=True,
                 )
                 return
