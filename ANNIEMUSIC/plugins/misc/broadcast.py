@@ -63,27 +63,31 @@ async def clean_mode(client, update, users, chats):
 
 @app.on_message(filters.command(broadcast) & filters.user(OWNER_ID))
 @language
-async def braodcast_message(client, message, _):
+async def broadcast_message(client, message, _):
     global IS_BROADCASTING
     if message.reply_to_message:
         x = message.reply_to_message.id
         y = message.chat.id
+        query = message.reply_to_message.text  # Use replied message text if available
     else:
         if len(message.command) < 2:
-            return await message.reply_text(_["broad_5"])
-        query = message.text.split(None, 1)[1]
-        if "-pin" in query:
-            query = query.replace("-pin", "")
-        if "-nobot" in query:
-            query = query.replace("-nobot", "")
-        if "-pinloud" in query:
-            query = query.replace("-pinloud", "")
-        if "-assistant" in query:
-            query = query.replace("-assistant", "")
-        if "-user" in query:
-            query = query.replace("-user", "")
-        if query == "":
-            return await message.reply_text(_["broad_6"])
+            query = "Default broadcast message"  # Default message if no text provided
+        else:
+            query = message.text.split(None, 1)[1]
+    
+    # Handle command flags
+    if "-pin" in query:
+        query = query.replace("-pin", "")
+    if "-nobot" in query:
+        query = query.replace("-nobot", "")
+    if "-pinloud" in query:
+        query = query.replace("-pinloud", "")
+    if "-assistant" in query:
+        query = query.replace("-assistant", "")
+    if "-user" in query:
+        query = query.replace("-user", "")
+    if not query.strip():
+        return await message.reply_text(_["broad_6"])
 
     IS_BROADCASTING = True
     ok = await message.reply_text(_["broad_8"])
