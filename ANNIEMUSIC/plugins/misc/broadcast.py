@@ -100,7 +100,7 @@ async def broadcast_message(client, message, _):
         for chat in schats:
             chats.append(int(chat["chat_id"]))
         for i in chats:
-            if i == config.LOG_GROUP_ID:
+            if i == config.LOGGER_ID:
                 continue
             try:
                 m = (
@@ -167,13 +167,13 @@ async def broadcast_message(client, message, _):
     if "-assistant" in message.text:
         aw = await message.reply_text(_["broad_2"])
         text = _["broad_3"]
-        from VIPMUSIC.core.userbot import assistants
+        from ANNIEMUSIC.core.userbot import assistants
 
         for num in assistants:
             sent = 0
             client = await get_client(num)
             async for dialog in client.get_dialogs():
-                if dialog.chat.id == config.LOG_GROUP_ID:
+                if dialog.chat.id == config.LOGGER_ID:
                     continue
                 try:
                     (
@@ -235,7 +235,7 @@ async def auto_clean():
             continue
         try:
             for chat_id in clean:
-                if chat_id == config.LOG_GROUP_ID:
+                if chat_id == config.LOGGER_ID:
                     continue
                 for x in clean[chat_id]:
                     if datetime.now() > x["timer_after"]:
