@@ -5,7 +5,6 @@ from ANNIEMUSIC import app
 from ANNIEMUSIC.misc import SUDOERS
 from ANNIEMUSIC.utils.database import add_off, add_on
 from ANNIEMUSIC.utils.decorators.language import language
-from ANNIEMUSIC.config import LOGGER_ID  # Import LOGGER_ID from config
 
 # Mock function to check if cookies are valid
 def are_cookies_valid():
