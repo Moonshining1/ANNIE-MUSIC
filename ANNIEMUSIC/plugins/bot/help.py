@@ -759,7 +759,7 @@ async def about_callback(client: Client, callback_query: CallbackQuery):
         [InlineKeyboardButton(text="🔙 Back", callback_data="go_to_start")],
     ]
     await callback_query.message.edit_text(
-        f"We have added or upgraded the following plugins given below ✨\n\n• Added ai response and ai img(chat-gpt).\n• Added quotly.\n• Added emoji game.\n• Update howsall, judge, wish, afk feature.\n• Update write, bug and fedration tools.\n• Added gif and animated sticker kang also.\n• Added Website of bot for preview.\n• Added Pinterest,yt and Insta video downloader.\n• Added inbuilt music system.\n\n"For more info about Annie updates check website 🎄👀,
+        f"We have added or upgraded the following plugins given below ✨\n\n• Added ai response and ai img(chat-gpt).\n• Added quotly.\n• Added emoji game.\n• Update howsall, judge, wish, afk feature.\n• Update write, bug and fedration tools.\n• Added gif and animated sticker kang also.\n• Added Website of bot for preview.\n• Added Pinterest,yt and Insta video downloader.\n• Added inbuilt music system.\n\nFor more info about Annie updates check website 🎄👀.",
         reply_markup=InlineKeyboardMarkup(buttons),
     )
 
