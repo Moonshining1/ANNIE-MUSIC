@@ -11,6 +11,7 @@ from ANNIEMUSIC.misc import _boot_
 from ANNIEMUSIC.plugins.sudo.sudoers import sudoers_list
 from ANNIEMUSIC.utils.database import get_served_chats, get_served_users, get_sudoers
 from ANNIEMUSIC.utils import bot_sys_stats
+from pyrogram.types import CallbackQuery
 from ANNIEMUSIC.utils.database import (
     add_served_chat,
     add_served_user,
