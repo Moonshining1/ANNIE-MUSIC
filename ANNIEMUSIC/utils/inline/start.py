@@ -40,3 +40,24 @@ def private_panel(_):
         ],
     ]
     return buttons
+
+
+def music_start_panel(_):
+    buttons = [
+        [
+            InlineKeyboardButton(
+                text="+ Add me to your clan darlo +",
+                url=f"https://t.me/{app.username}?startgroup=true",
+            )
+        ],
+        [
+            InlineKeyboardButton(text="⭐ About me⭐", callback_data="about"),
+            InlineKeyboardButton(text="✨ Help ✨", callback_data="feature"),
+        ],
+        [
+            InlineKeyboardButton(text="❄ Owner ❄", callback_data="developer"),
+            InlineKeyboardButton(text="🎄 Update 🎄", url="https://t.me/kittyxupdates"),
+        ],
+    ]
+    return buttons
+    
