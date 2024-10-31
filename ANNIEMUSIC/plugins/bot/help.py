@@ -453,21 +453,21 @@ async def tools_callback_cb(client, CallbackQuery, _):
 async def about_callback(client: Client, callback_query: CallbackQuery):
     buttons = [
         [
-            InlineKeyboardButton(text="🔰ᴏᴡɴᴇʀ🔰", url=f"https://t.me/moonshining1"),
+            InlineKeyboardButton(text="🇲σ᭡፝֟ɳ🌙", url=f"https://t.me/about_ur_moonshining/5"),
             InlineKeyboardButton(
-                text="📍sᴜᴅᴏᴇʀs📍", url=f"https://t.me/{app.username}?start=sudo"
+                text="Owner's clan 🎄", url=f"https://t.me/grandxmasti"
             ),
         ],
         [
-            InlineKeyboardButton(text="🎁ɪɴsᴛᴀ🎁", url=f"instagram.com/the.vip.boy"),
-            InlineKeyboardButton(text="💲ʏᴏᴜᴛᴜʙᴇ💲", url=f"youtube.com/@THE_VIP_BOY"),
+            InlineKeyboardButton(text="🎄 Galaxy 🎄", callback_data="galaxy"),
+            InlineKeyboardButton(text="⭐ Help ⭐", callback_data="features"),
         ],
         [
             InlineKeyboardButton(text="🔙 Back", callback_data="about")
         ],  # Use a default label for the back button
     ]
     await callback_query.message.edit_text(
-        "✦ **ᴛʜɪs ʙᴏᴛ ɪs ᴍᴀᴅᴇ ʙʏ ᴀ sᴋɪʟʟᴇᴅ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴛᴏ ᴍᴀᴋᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴇᴀsʏ ᴛᴏ ᴍᴀɴᴀɢᴇ ᴀɴᴅ ᴍᴏʀᴇ ғᴜɴ.**\n\n✦ **ᴡɪᴛʜ ᴊᴜsᴛ ᴀ ғᴇᴡ ᴄʟɪᴄᴋs, ʏᴏᴜ ᴄᴀɴ ᴄᴏɴᴛʀᴏʟ ᴇᴠᴇʀʏᴛʜɪɴɢ—ʟɪᴋᴇ sᴇᴛᴛɪɴɢ ᴜᴘ ᴏᴡɴᴇʀ sᴇᴛᴛɪɴɢs, ᴄʜᴇᴄᴋɪɴɢ sᴜᴅᴏᴇʀs, ᴀɴᴅ ᴇᴠᴇɴ ᴇxᴘʟᴏʀɪɴɢ ɪɴsᴛᴀɢʀᴀᴍ ᴀɴᴅ ʏᴏᴜᴛᴜʙᴇ.**\n\n✦ **ᴛʜᴇ ʙᴏᴛ ɪs ᴅᴇsɪɢɴᴇᴅ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ sᴍᴏᴏᴛʜʟʏ ᴀɴᴅ ᴇɴᴊᴏʏ ᴍᴜsɪᴄ ᴛᴏᴏ. ᴊᴜsᴛ ᴜsᴇ ᴛʜᴇ ʙᴜᴛᴛᴏɴs ʙᴇʟᴏᴡ ᴀɴᴅ sᴇᴇ ʜᴏᴡ ᴇᴀsʏ ɪᴛ ɪs!**",
+        "**Hey,**\n\n**I am Annie bot ✨**\n\n**I am created with love by my [🇲σ᭡፝֟](https://t.me/about_ur_moonshining/5)🌙 ❤.**",
         reply_markup=InlineKeyboardMarkup(buttons),
     )
 
@@ -766,12 +766,12 @@ async def back_button_callback(client: Client, callback_query: CallbackQuery):
             InlineKeyboardButton(text="Developer 👨‍💻", user_id=config.OWNER_ID[0]),
             InlineKeyboardButton(
                 text="🌱ɢɪᴛʜᴜʙ🌱",
-                url="https://github.com/THE-VIP-BOY-OP",
+                url="https://github.com/moonshining1/ANNIE-MUSIC",
             ),
         ],
         [
-            InlineKeyboardButton(text="⛅ɢʀᴏᴜᴘ⛅", url=f"{config.SUPPORT_GROUP}"),
-            InlineKeyboardButton(text="🎄ᴄʜᴀɴɴᴇʟ🎄", url=f"{config.SUPPORT_CHANNEL}"),
+            InlineKeyboardButton(text="⛅ɢʀᴏᴜᴘ⛅", url=f"https://t.me/grandxmasti"),
+            InlineKeyboardButton(text="🎄ᴄʜᴀɴɴᴇʟ🎄", url=f"https://t.me/kittyxupdates "),
         ],
         [InlineKeyboardButton(text="✯ ʜᴏᴍᴇ ✯", callback_data="go_to_start")],
     ]
@@ -793,8 +793,8 @@ async def back_button_callback(client: Client, callback_query: CallbackQuery):
             ),
         ],
         [
-            InlineKeyboardButton(text="Annie updates", url=f"{config.SUPPORT_CHANNEL}"),
-            InlineKeyboardButton(text="Share ur query💡", url=f"{config.SUPPORT_GROUP}"),
+            InlineKeyboardButton(text="Annie updates", url=f"https://t.me/kittyxupdates"),
+            InlineKeyboardButton(text="Share ur query💡", url=f"https://t.me/pwmbothub"),
         ],
         [InlineKeyboardButton(text="✯ ʜᴏᴍᴇ ✯", callback_data="go_to_start")],
     ]
