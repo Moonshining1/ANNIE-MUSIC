@@ -7,7 +7,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 import config
 from config import BANNED_USERS, START_IMG_URL
-from strings import get_command, get_string
+from strings import get_string
 from ANNIEMUSIC import HELPABLE, app
 from ANNIEMUSIC.utils.databaset import get_lang, is_commanddelete_on
 from ANNIEMUSIC.utils.decorators.language import LanguageStart
