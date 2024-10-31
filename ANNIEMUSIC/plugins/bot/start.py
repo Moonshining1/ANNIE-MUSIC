@@ -21,7 +21,10 @@ from ANNIEMUSIC.utils.database import (
 )
 from ANNIEMUSIC.utils.decorators.language import LanguageStart
 from ANNIEMUSIC.utils.formatters import get_readable_time
-from ANNIEMUSIC.utils.inline import help_pannel, private_panel, start_panel
+from ANNIEMUSIC.utils.functions import MARKDOWN
+from ANNIEMUSIC.utils.inline import music_start_panel, start_pannel
+
+from .help import paginate_modules
 from config import BANNED_USERS
 from strings import get_string
 
@@ -161,3 +164,4 @@ async def welcome(client, message: Message):
                 await message.stop_propagation()
         except Exception as ex:
             print(ex)
+    
