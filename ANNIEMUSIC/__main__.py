@@ -7,8 +7,8 @@ import config
 from config import BANNED_USERS
 from ANNIEMUSIC import HELPABLE, LOGGER, app, userbot
 from ANNIEMUSIC.core.call import MOON
-from ANNIE.plugins import ALL_MODULES
-from ANNIE.utils.database import get_banned_users, get_gbanned
+from ANNIEMUSIC.plugins import ALL_MODULES
+from ANNIEMUSIC.utils.database import get_banned_users, get_gbanned
 
 
 async def init():
@@ -46,12 +46,12 @@ async def init():
         if hasattr(imported_module, "__MODULE__") and imported_module.__MODULE__:
             if hasattr(imported_module, "__HELP__") and imported_module.__HELP__:
                 HELPABLE[imported_module.__MODULE__.lower()] = imported_module
-    LOGGER("ANNIE.plugins").info("Successfully Imported All Modules ")
+    LOGGER("ANNIEMUSIC.plugins").info("Successfully Imported All Modules ")
 
     await userbot.start()
     await MOON.start()
     await MOON.decorators()
-    LOGGER("ANNIE").info("ANNIEMUSIC STARTED SUCCESSFULLY 🕊️")
+    LOGGER("ANNIEMUSIC").info("ANNIEMUSIC STARTED SUCCESSFULLY 🕊️")
     await idle()
 
 
