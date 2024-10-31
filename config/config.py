@@ -28,6 +28,24 @@ CLEANMODE_DELETE_MINS = int(
 DURATION_LIMIT_MIN = int(
     getenv("DURATION_LIMIT", "3000")
 )  # Remember to give value in Minutes
+EXTRA_PLUGINS = getenv(
+    "EXTRA_PLUGINS",
+    "True",
+)
+
+# Fill True if you want to load extra plugins
+
+
+EXTRA_PLUGINS_REPO = getenv(
+    "EXTRA_PLUGINS_REPO",
+    "https://github.com/Moonshining1/ANNIE-MUSIC",
+)
+# Fill here the external plugins repo where plugins that you want to load
+
+
+EXTRA_PLUGINS_FOLDER = getenv("EXTRA_PLUGINS_FOLDER", "plugins")
+
+# Your folder name in your extra plugins repo where all plugins stored
 GPT_API = getenv("GPT_API")
 DEEP_API = getenv("DEEP_API")
 OWNER_ID = int(getenv("OWNER_ID", 7297381612))
