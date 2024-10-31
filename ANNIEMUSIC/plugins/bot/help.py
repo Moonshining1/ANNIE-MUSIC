@@ -726,7 +726,7 @@ async def about_callback(client: Client, callback_query: CallbackQuery):
     buttons = [
         [
             InlineKeyboardButton(
-                text="• Meowsteric v2.0 •",
+                text="• Annie v2.0 •",
                 callback_data="annie",
             ),
         ],
@@ -804,6 +804,10 @@ async def back_button_callback(client: Client, callback_query: CallbackQuery):
         ],
         [InlineKeyboardButton(text="✯ ʜᴏᴍᴇ ✯", callback_data="go_to_start")],
     ]
+    await callback_query.message.edit_text(
+        "Join our groups....🧊\n\nFor more info about meowsteric updates check support 🎄👀",
+        reply_markup=InlineKeyboardMarkup(keyboard),
+    )    
 
 @app.on_callback_query(filters.regex("source"))
 async def back_button_callback(client: Client, callback_query: CallbackQuery):
