@@ -666,8 +666,8 @@ async def feature_callback(client: Client, callback_query: CallbackQuery):
     keyboard = [
         [
             InlineKeyboardButton(
-                text="⚜️ ᴋɪᴅɴᴀᴘ ᴍᴇ ɪɴ ɴᴇᴡ ɢʀᴏᴜᴘ ᴏʀ ᴄʜᴀɴɴᴇʟ ⚜️",
-                url=f"https://t.me/{app.username}?startgroup=true",
+                text="🎄 Galaxy 🎄",
+                callback_data="galaxy",
             ),
         ],
         [
@@ -763,7 +763,7 @@ async def about_callback(client: Client, callback_query: CallbackQuery):
 async def back_button_callback(client: Client, callback_query: CallbackQuery):
     keyboard = [
         [
-            InlineKeyboardButton(text="🎭ᴏᴡɴᴇʀ🎭", user_id=config.OWNER_ID[0]),
+            InlineKeyboardButton(text="Developer 👨‍💻", user_id=config.OWNER_ID[0]),
             InlineKeyboardButton(
                 text="🌱ɢɪᴛʜᴜʙ🌱",
                 url="https://github.com/THE-VIP-BOY-OP",
@@ -781,6 +781,28 @@ async def back_button_callback(client: Client, callback_query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(keyboard),
     )
 
+
+@app.on_callback_query(filters.regex("galaxy"))
+async def back_button_callback(client: Client, callback_query: CallbackQuery):
+    keyboard = [
+        [
+            InlineKeyboardButton(text="Developer 👨‍💻", callback_data="developer"),
+            InlineKeyboardButton(
+                text="🌱Github🌱",
+                url="https://github.com/moonshining1/annie-music",
+            ),
+        ],
+        [
+            InlineKeyboardButton(text="Annie updates", url=f"{config.SUPPORT_CHANNEL}"),
+            InlineKeyboardButton(text="Share ur query💡", url=f"{config.SUPPORT_GROUP}"),
+        ],
+        [InlineKeyboardButton(text="✯ ʜᴏᴍᴇ ✯", callback_data="go_to_start")],
+    ]
+
+    await callback_query.message.edit_text(
+        "**Join our groups....🧊**\n\n**For more info about meowsteric updates check support 🎄👀  (✿◠‿◠)**",
+        reply_markup=InlineKeyboardMarkup(keyboard),
+    )
 
 @app.on_callback_query(filters.regex("basic_guide"))
 async def settings_back_callback(client: Client, callback_query: CallbackQuery):
