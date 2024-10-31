@@ -70,7 +70,7 @@ AYU = [
 ]
 
 AYUV = [
-    "Hey, I am {1} 🥀.\n\n➻ I'm a Telegram streaming bot with some useful features.\n\nSupporting platforms: YouTube, Spotify, SoundCloud etc.\n\nFeel free to add me to your groups.
+    "Hey, I am {1} 🥀.\n\n➻ I'm a Telegram streaming bot with some useful features.\n\nSupporting platforms: YouTube, Spotify, SoundCloud etc.\n\nFeel free to add me to your groups."
     ]
 
 BANNED_USERS = filters.user()
