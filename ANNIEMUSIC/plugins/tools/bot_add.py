@@ -23,9 +23,9 @@ async def join_watcher(_, message):
                     groups_photo = await app.download_media(
                         chat.photo.big_file_id, file_name=f"chatpp{chat.id}.png"
                     )
-                    chat_photo = groups_photo if groups_photo else "assets/nodp.png"
+                    chat_photo = groups_photo if groups_photo else "ANNIEMUSIC/assets/nodp.png"
                 except AttributeError:
-                    chat_photo = "assets/nodp.png"
+                    chat_photo = "ANNIEMUSIC/assets/nodp.png"
 
                 count = await app.get_chat_members_count(chat.id)
                 username = chat.username if chat.username else "𝐏ʀɪᴠᴀᴛᴇ 𝐆ʀᴏᴜᴘ"
