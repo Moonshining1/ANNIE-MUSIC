@@ -222,7 +222,7 @@ def private_help_panel(_):
         [
             InlineKeyboardButton(
                 text="💗 ʜᴇʟᴘ 💗",
-                callback_data="settings_back_helper",
+                callback_data="feature",
             ),
         ],
     ]
