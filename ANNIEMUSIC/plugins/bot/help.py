@@ -96,7 +96,7 @@ def paginate_modules(page_n, module_dict, prefix, chat=None, close: bool = False
 
 
 @app.on_message(filters.command(["help"]) & filters.private & ~BANNED_USERS)
-@app.on_callback_query(filters.regex("settings_back_helper") & ~BANNED_USERS)
+@app.on_callback_query(filters.regex("feature") & ~BANNED_USERS)
 async def helper_private(
     client: app, update: Union[types.Message, types.CallbackQuery]
 ):
@@ -839,9 +839,3 @@ async def settings_back_callback(client: Client, callback_query: CallbackQuery):
         text=guide_text, reply_markup=InlineKeyboardMarkup(keyboard)
     )
 
-
-@app.on_message(filters.command(["help"]) & filters.private & ~BANNED_USERS)
-@app.on_callback_query(filters.regex("settings_back_helper") & ~BANNED_USERS)
-async def helper_private(
-    client: app, update: Union[types.Message, types.CallbackQuery]
-)
