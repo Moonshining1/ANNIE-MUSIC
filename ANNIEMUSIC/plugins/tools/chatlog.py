@@ -5825,7 +5825,7 @@ from pyrogram import filters
 LOG = "MOON_SHINING_ROBOT" #Dont change it because it fix all errors
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import os
-from config import LOG_GROUP_ID
+from config import LOGGER_ID as LOG_GROUP_ID
 from VIPMUSIC import app
 from VIPMUSIC.utils.database import add_served_chat, get_assistant
 log = os.getenv("BOT_TOKEN")
