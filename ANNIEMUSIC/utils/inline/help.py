@@ -222,7 +222,7 @@ def private_help_panel(_):
         [
             InlineKeyboardButton(
                 text="💗 ʜᴇʟᴘ 💗",
-                callback_data="settings_back_helper",
+                url=f"https://t.me/musicXanime_bot?start=help"
             ),
         ],
     ]
