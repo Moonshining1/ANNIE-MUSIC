@@ -838,3 +838,10 @@ async def settings_back_callback(client: Client, callback_query: CallbackQuery):
     await callback_query.message.edit_text(
         text=guide_text, reply_markup=InlineKeyboardMarkup(keyboard)
     )
+
+
+@app.on_message(filters.command(["help"]) & filters.private & ~BANNED_USERS)
+@app.on_callback_query(filters.regex("settings_back_helper") & ~BANNED_USERS)
+async def helper_private(
+    client: app, update: Union[types.Message, types.CallbackQuery]
+)
