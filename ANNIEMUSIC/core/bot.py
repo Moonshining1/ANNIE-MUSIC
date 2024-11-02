@@ -1,14 +1,14 @@
 from pyrogram import Client, errors
-from pyrogram.enums import ChatMemberStatus, ParseMode
+from pyrogram.enums import ChatMemberStatus
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 import config
-
 from ..logging import LOGGER
 
 
 class MOON(Client):
     def __init__(self):
-        LOGGER(__name__).info(f"Annie is on the way...")
+        LOGGER(__name__).info("Annie is on the way...")
         super().__init__(
             name="𝐀𝐍𝐍𝐈𝐄 𝐗 𝐌𝐔𝐒𝐈𝐂",
             api_id=config.API_ID,
@@ -25,10 +25,30 @@ class MOON(Client):
         self.username = self.me.username
         self.mention = self.me.mention
 
+        # Creating a single button layout
+        keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "+ Add me to your clan darlo +", url=f"https://t.me/{self.username}?startgroup=true"
+                    )
+                ]
+            ]
+        )
+
         try:
             await self.send_message(
                 chat_id=config.LOGGER_ID,
-                text=f"<u><b>» {self.mention} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ :</b><u>\n\nɪᴅ : <code>{self.id}</code>\nɴᴀᴍᴇ : {self.name}\nᴜsᴇʀɴᴀᴍᴇ : @{self.username}",
+                text=(
+                    f"✨ <b>{self.mention}</b> is alive 🖤!\n\n"
+                    f"<b>System Stats:</b>\n"
+                    f"✨  Uptime: 3.11.5\n"
+                    f"☁️  Ram: 13.15\n"
+                    f"❄️  Cpu: 1.34.0\n"
+                    f"🔮  Disk: 2.0.106\n\n"
+                    f"<i>Made {self.mention} with love by ᴅᴇᴠᴇʟᴏᴘᴇʀs✨🥀</i>"
+                ),
+                reply_markup=keyboard  # Adding the single button
             )
         except (errors.ChannelInvalid, errors.PeerIdInvalid):
             LOGGER(__name__).error(
