@@ -28,19 +28,18 @@ from .help import paginate_modules
 from config import BANNED_USERS
 from strings import get_string
 
-
-
 YUMI_PICS = [
-"https://files.catbox.moe/xhpqtp.jpg",
-
+    "https://files.catbox.moe/xhpqtp.jpg",
 ]
 
-
+STICKER_ID = "CAACAgUAAxkDAAIEBWcjprCQjcBxs8A_vw8-HOxt3w8dAAIeCgACya4ZVWcoG8RVlky8NgQ"  # Replace with your sticker ID
 
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_pm(client, message: Message, _):
     await add_served_user(message.from_user.id)
+    await client.send_sticker(chat_id=message.chat.id, sticker=STICKER_ID)  # Send the sticker
+
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
@@ -102,7 +101,7 @@ async def start_pm(client, message: Message, _):
         UP, CPU, RAM, DISK = await bot_sys_stats()
         await message.reply_photo(
             random.choice(YUMI_PICS),
-            caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM,served_users,served_chats),
+            caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM, served_users, served_chats),
             reply_markup=InlineKeyboardMarkup(out),
         )
         if await is_on_off(2):
@@ -110,7 +109,6 @@ async def start_pm(client, message: Message, _):
                 chat_id=config.LOGGER_ID,
                 text=f"✦ {message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ.\n\n✦ <b>ᴜsᴇʀ ɪᴅ ➠</b> <code>{message.from_user.id}</code>\n✦ <b>ᴜsᴇʀɴᴀᴍᴇ ➠</b> @{message.from_user.username}",
             )
-
 
 @app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
 @LanguageStart
@@ -122,7 +120,6 @@ async def start_gp(client, message: Message, _):
         reply_markup=InlineKeyboardMarkup(out),
     )
     return await add_served_chat(message.chat.id)
-
 
 @app.on_message(filters.new_chat_members, group=-1)
 async def welcome(client, message: Message):
@@ -173,4 +170,3 @@ async def go_to_home(client, callback_query: CallbackQuery, _):
         text=_["start_2"].format(callback_query.message.from_user.mention, app.mention),
         reply_markup=InlineKeyboardMarkup(out),
     )
-    
