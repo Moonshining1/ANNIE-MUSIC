@@ -36,10 +36,14 @@ class MOON(Client):
             ]
         )
 
+        # Specify the image path or URL
+        image_path = "https://envs.sh/_kf.png"  # Replace with actual path or URL of the image
+
         try:
-            await self.send_message(
+            await self.send_photo(
                 chat_id=config.LOGGER_ID,
-                text=(
+                photo=image_path,
+                caption=(
                     f"✨ <b>{self.mention}</b> is alive 🖤!\n\n"
                     f"<b>System Stats:</b>\n"
                     f"✨  Uptime: 3.11.5\n"
