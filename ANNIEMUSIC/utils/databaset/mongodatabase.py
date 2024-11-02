@@ -446,8 +446,8 @@ broadcast_db = mongodb.broadcast_stats
 
 
 async def save_broadcast_stats(sent: int, susr: int):
-    # Get current stats
-    current_stats = await broadcast_db.find_one({"_id": 1})
+    # Get current stats, ensuring it's a dictionary if None
+    current_stats = await broadcast_db.find_one({"_id": 1}) or {}
 
     # Prepare update values
     update_values = {}
@@ -468,6 +468,5 @@ async def save_broadcast_stats(sent: int, susr: int):
 async def get_broadcast_stats():
     stats = await broadcast_db.find_one({"_id": 1})
     return stats if stats else {}
-
 
 # ============================BROADCAST CHATS DB=============================
